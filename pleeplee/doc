@@ -1,0 +1,5 @@
+kind/id/msg
+
+kind: [release take nohandler]
+
+take: slave:prio

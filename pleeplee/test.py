@@ -13,7 +13,7 @@ def p():
     print("445")
     while True:
         print(c.recv(10000))
-        time.sleep(5)
+        time.sleep(0.5)
 
 import threading
 a = threading.Thread(target=p)
@@ -37,11 +37,11 @@ while True:
         c.sendtoserial("servo", str(val))
         continue
     if val > i[index]:
-        for j in range(i[index], val + 1, 5):
+        for j in range(i[index], val + 1, 500):
             c.sendtoserial("motor{}".format(index + 1), str(j))
             time.sleep(0.15)
     else:
-        for j in range(i[index], val - 1, 5):
+        for j in range(i[index], val - 1, 500):
             print(j)
             c.sendtoserial("motor{}".format(index + 1), str(j))
             time.sleep(0.15)
