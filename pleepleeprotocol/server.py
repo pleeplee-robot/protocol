@@ -3,7 +3,7 @@ import sys
 import os
 import serial
 
-from state import server_state
+from .state import server_state
 
 SERIAL = serial.Serial(
 # Port to the Arduino.
