@@ -31,9 +31,12 @@ A client is identified both by its socket (identity to the server) and a public 
 Packets are composed of three parts, separated by slashes:
 - `type`, that identifies which handler should handle the packet (for instance, setname or sendToSerial)
 - `ID`, which could be use if bidirectionnal communication must occur to identify which packet a response is related to. Implementation for such a followup system should be implemented by an higher layer protocol.
-- the message (which can contain slashes) accompanying the packet.Provided types are as follow:
-- `setname` (sets the name of the client to the content of the message)
-- `sendserial` (sends the message to the serial)
-- `send` (message is dst:msg. Sends msg to the client identified by dst)
-- `release` (message is the name of the module) release possession of the module whose name is the message. Messages from this device will not be received anymore Responded with OK or an error message.
-- `take` (message is priority:name with priority a number and name the name of the module to tke ownership of). Responded with OK or an error. If OK, messages from this Arduino module will be forwarded to the client with type "from name".
+- The message (which can contain slashes) accompanying the packet. Provided types are as follow:
+
+### Types of Message
+
+* `setname` (sets the name of the client to the content of the message)
+* `sendserial` (sends the message to the serial)
+* `send` (message is dst:msg. Sends msg to the client identified by dst)
+* `release` (message is the name of the module) release possession of the module whose name is the message. Messages from this device will not be received anymore Responded with OK or an error message.
+* `take` (message is priority:name with priority a number and name the name of the module to tke ownership of). Responded with OK or an error. If OK, messages from this Arduino module will be forwarded to the client with type "from name".

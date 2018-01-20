@@ -5,10 +5,14 @@ import serial
 
 from .state import server_state
 
-SERIAL = serial.Serial(
-# Port to the Arduino.
-port="/dev/ttyACM0",
-baudrate=9600, timeout=0.05)
+try:
+    SERIAL = serial.Serial(
+    # Port to the Arduino.
+    port="/dev/ttyACM0",
+    baudrate=9600, timeout=0.05)
+except serial.serialutil.SerialException:
+    print('No device in serial /dev/ttyACM0')
+    sys.exit(1)
 
 def tick(sock, state):
     """Update the server according to the new clients and received messages.
